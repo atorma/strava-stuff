@@ -1,0 +1,33 @@
+{
+  "name": "strava-upload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/upload-to-strava.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sports-alliance/sports-lib": "4.2.18",
+    "@types/async-retry": "1.4.2",
+    "@types/ms": "0.7.31",
+    "async-retry": "1.3.1",
+    "axios": "0.19.2",
+    "commander": "^6.0.0",
+    "csv-stringify": "5.5.0",
+    "http-status": "1.4.2",
+    "inquirer": "7.3.3",
+    "lodash": "4.17.19",
+    "ms": "2.1.2",
+    "strava-v3": "2.0.5",
+    "tiny-async-pool": "1.1.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "7.3.0",
+    "@types/lodash": "4.14.159",
+    "@types/node": "14.0.26",
+    "prettier": "2.0.5"
+  }
+}
