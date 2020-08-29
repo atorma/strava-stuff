@@ -1,5 +1,5 @@
 import { SportsLib } from '@sports-alliance/sports-lib';
-import { readFile } from 'fs/promises';
+import { promises as fs } from 'fs';
 import { ActivityType } from '../strava/strava.types';
 import { EventInterface } from '@sports-alliance/sports-lib/lib/events/event.interface';
 
@@ -24,7 +24,7 @@ export function parseFile(filePath: string): Promise<EventInterface> {
 
 async function parseFitFile(filePath: string): Promise<EventInterface> {
   try {
-    const buffer = await readFile(filePath);
+    const buffer = await fs.readFile(filePath);
     return await SportsLib.importFromFit(buffer.buffer);
   } catch (err) {
     throw new Error(`Error when parsing file "${filePath}"`);

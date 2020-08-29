@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import { getFilesInDirectory } from './files/file-utils';
 import { activitiesToCsv } from './fit/activities-to-csv';
-import { writeFile } from 'fs/promises';
+import { promises as fs } from 'fs';
 
 program
   .requiredOption('-d, --directory <path>', 'directory path of fit files')
@@ -12,5 +12,5 @@ program
   const filePaths = await getFilesInDirectory(program.directory);
   const csvFilePath = program.csvFile;
   const csvString = await activitiesToCsv(filePaths);
-  await writeFile(csvFilePath, csvString);
+  await fs.writeFile(csvFilePath, csvString);
 })();
