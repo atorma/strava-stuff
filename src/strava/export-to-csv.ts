@@ -15,6 +15,7 @@ interface Activity {
   averageSpeed: number;
   averageWatts: number;
   weightedAverageWatts: number;
+  deviceWatts: boolean;
   averageHeartRate: number;
   averageCadence: number;
   totalElevationGain: number;
@@ -31,6 +32,7 @@ const CSV_COLUMNS = [
   'averageSpeed',
   'averageWatts',
   'weightedAverageWatts',
+  'deviceWatts',
   'averageHeartRate',
   'averageCadence',
   'totalElevationGain',
@@ -95,6 +97,8 @@ function getCsvParserStream(): Parser {
         case 'startedAt':
           return new Date(value);
         case 'trainer':
+          return value === 'True';
+        case 'devicePower':
           return value === 'True';
         default:
           return parseFloat(value);
@@ -181,6 +185,7 @@ function transformApiData(data: Record<string, any>): Activity {
     averageSpeed: data.average_speed,
     averageWatts: data.average_watts,
     weightedAverageWatts: data.weighted_average_watts,
+    deviceWatts: data.device_watts,
     averageHeartRate: data.average_heartrate,
     averageCadence: data.average_cadence,
     totalElevationGain: data.total_elevation_gain,
